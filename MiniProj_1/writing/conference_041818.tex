@@ -1,0 +1,278 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+%https://www.overleaf.com/project/5d8e475dec66910001f28229
+\usepackage{cite}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{textcomp}
+\usepackage{lineno,hyperref}
+\usepackage{caption}
+\usepackage{subcaption} 
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{hhline}
+\usepackage{url}
+\usepackage{csquotes}
+\usepackage[dvipsnames]{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{
+A report on Text Classifications
+}
+
+\author{
+	\IEEEauthorblockN{
+		Srikanth Amudala and
+		Kamal Maanicshah
+		 }
+	\IEEEauthorblockA{
+		Email:  srikanth.amudala@mail.mcgill.ca ,  kamal.mathinhenry@mail.mcgill.ca}
+	}
+
+\maketitle
+\begin{abstract}
+One of the applications of machine learning is in the
+classification where model construction is utilized for
+text classification . The more the model learns from previous
+data, the more accurate it would perform.The ability of a
+classification model to achieve high accuracy in text mining 
+is of significant importance. The complexity of text data
+unfavorable for most models, which is a major challenge, the
+training and testing data in classification of data must be selected
+in a way that the model enjoys the most efficient learning from
+previous data and the highest accuracy in text classification.
+In this study, the reddit dataset of comments , the models
+for predicting the catogeries  are developed based on
+logistic regression , Support Vector Machine and Naive Bayesian methods and the accuracy of each model is evaluated. The best performance and accuracy, while it depends
+on the nature and complexity of the dataset.
+\end{abstract}
+\section{Introduction}
+
+
+Text classification problems have been widely studied and addressed in many real world applications
+over the last few years. Especially with Natural Language Processing
+(NLP) and text mining, many researchers are now interested in developing applications that leverage
+text classification methods. Most text classification and document categorization systems can be
+deconstructed into the following four phases: Feature extraction, dimension reductions, classifier
+selection, and evaluations. In this paper, we discuss the structure and technical implementations of text classification systems by accuracy of the results using Navie Bayes, Logistic Regression, 
+Support Vector Machines, Gradient Boosting classifier, k-nearest neighbors and Random Forest.
+
+Any text classification algorithms has four different levels of scope.
+1. Document level: The relavent categories of a full document are obtained in Document level.
+2. Paragraph level: In the paragraph level, the algorithm obtains the relevant categories of a single
+paragraph (a portion of a document).
+3. Sentence level: In the sentence level, obtains the relevant categories of a single sentence (a portion
+of a paragraph).
+4. Sub-sentence level: In the sub-sentence level, the algorithm obtains the relevant categories of
+sub-expressions within a sentence (a portion of a sentence). Our work in this paper focuses on Sentence level. 
+We define our machine learning pipe line in the following way.
+% The pipe line of classification is divided into the following 
+
+\subsection{Feature Extraction} 
+In general, messages and archives are unstructured informational collections. These unstructured content arrangements must be changed over into an organized component space as a major aspect of a classifier. The data should be cleaned to discard the non-useful characters and words, the data pre-processing is explained in detail in section 3. After the data has been cleaned, formal element extraction strategies are applied. The normal methods of highlight extractions used in this paper are Term Frequency-Inverse Document Recurrence (TF-IDF), Term Frequency (TF) and Word2Vec.
+We have used all the techniques and found TF-IDF and Term Frequency are more useful. 
+\subsection{Dimensionality Reduction} 
+As content or report informational collections frequently contain numerous interesting words, information pre-preparing steps can be slacked by high time and memory multifaceted nature. A typical arrangement to this issue is just utilizing cheap calculations. Notwithstanding, in certain informational collections, these sorts of modest calculations don't execute just as anticipated. So as to maintain a strategic distance from the reduction in execution, numerous specialists like to utilize dimensionality decrease to lessen the time and memory intricacy for their applications. Utilizing dimensionality decrease for pre-preparing could be more productive than creating economical classifiers. 
+In Section 3, we discuss more about the dimensionality reduction that we have applied to our data in order improve the efficiency and accuracy. 
+
+\section{Related work}
+Numerious numbers of research publications have been published on text classification. A detailed explanation of different classification techniques were discussed in \cite{b1}. 
+Textntence level as we  class ification works 
+% http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.65.9324&rep=rep1&type=pdf
+
+
+\section{Datasets and data preproceciing }
+The dataset we experiment with for this project is the reddit comments data provided in the Kaggle competition. This happened to be a challenging dataset than expected as the correlation between the words and the respective classes were minimal. Also, there were some classes which had similar keywords like the ones related to gaming: 'leagueoflegends', 'overwatch', 'GlobalOffensive', etc. Similar problems are experienced in sports related classes like 'nba', 'hockey', 'soccer', 'baseball', 'nfl', etc. To obtain the most relevant keywords from the comments, first we have to remove the unnecessary punctuation and other formatting in the comments as they hold minimal information for classification. For example, some of the comments had links to websites which are of no use as they may vary for each comment. Also, some people use special characters in their writing which has  is of no use as well. In addition to this we also have to take care of stop words in the data. Stop words are those which might be present in abundance in text data and might not help in classification. Good examples for these type of words are I, you, and, is, are, etc.
+use the below links 
+
+1. we made the text case insensitive by converting all the text to lower case
+2. we removed all the unnecessary special chars ()
+3. we removed the punchuvation marks
+4. we removed the stop words
+5. removed the stemming words
+6. found tfid for the whole datasets and gave a manual threshold, all the features less than the threshold were dropped from the table.
+7. The features that are presenct in the comment is taken as 1 and 0 other wise making the problem to be binary classification.
+%%%% http://kavita-ganesan.com/what-are-stop-words/#.XaepU5NKhQI
+
+%%%%% https://github.com/kavgan/nlp-in-practice/blob/master/text-pre-processing/Text%20Preprocessing%20Examples.ipynb
+\section{Model}
+\subsection{Support Vector Machine}
+Support vector machines (SVM) are a group of eager learning
+methods utilized in classification and regression problems.
+The SVM uses non-linear mapping to minimize empirical
+classification error and maximize the geometric margin \cite{SVM}.
+The objective in this algorithm is to discriminate positive data
+from the set of negative data with the maximum border
+line in the area of features. With the assumption that, the
+categories are separable in linear manner, hyper-planes with
+maximum margin are developed to separate the categories.
+In the case where data are not separable in linear manner,
+data is mapped in a larger space in order to separate them
+in linear manner \cite{SVM2}
+In SVM a given data is observed as a Pdimensional
+vector (or a list of P). In this method attempt
+is made to separate the points with a P-1 dimensional hyperplane.
+This process is named linear discrimination. There exist
+various hyper-planes which separate the data[8].Based on this
+technique SVM are also referred to as Maximum Margin
+Classifiers. The algorithm searches for the maximum distance
+between the two closest of points of each class. Initially the
+SVM determines a hyperplane which has the largest fraction
+of points of one class on the same plane. A hyperplane
+is also determined for the next class forming two parallel hyperplanes making it the best case for our data set which has 20 different classes. \cite{SVM2}
+\subsection{Logistic Regression}
+Logistic regression  is practical in many areas such as text classification since it is a linear model with a number of parameters equal to the dimensionality of the dataset. 
+suppose a text classifier, $y = f(x)$, from a set of
+training examples $D = {(x_1, y_1), . . . ,(x_n, y_n)}$ that we want to learn .
+For text categorization, the vectors $x_i = [x_{i1}, ..., x_{id}]^T$ comprise transformed word frequencies from documents
+It models the conditional probability as:
+
+\begin{align}
+	w_{k+1} &= w_k + \alpha_k\sum_{i=1}^nx_i\left(y_i-\sigma\left(w_k^Tx_i\right)\right)\label{loggrad}\\
+	&\text{with}\quad\sigma(x)=\cfrac{1}{1+\exp{(-x)}}\nonumber
+	\end{align}
+
+{\color{blue}
+{\color{red} please pharaphrase it :) }
+For a text categorization problem, $p(y)$ corresponds to the probability that the $i_{th}$ document belongs to
+the category. The decision of whether to assign the category can be based on comparing the probability estimate
+with a threshold or, more generally, based on maximizing
+the expected effectiveness \cite{LR}
+
+
+
+}
+	
+	
+	
+	
+
+\subsection{Bernoulli naive Bayes}
+The Na¨ıve Bayes Algorithm is a form Bayesian classifiers
+which are statistically structured. Based on the Bayesian theorem,
+the Na¨ıve Bayes makes the assumption that the presence
+of a particular attribute of a class is unrelated to the presence of
+another attribute \cite{naiveB}
+It assumes all attributes to be independent
+giving it the name Na¨ıve. The classifier also assumes that no
+hidden or latent attributes influence the prediction process. The
+algorithm used the probabilities of each attribute belonging
+to each class to make a prediction \cite{naiveB}
+
+
+
+Let assume $C$ is a random class in a data set of $m$ classes.
+Let $X$ be a given tuple of random variables denoting observed
+attribute values. Given $X$ the classifier will predict that $X$
+belongs to the class having the highest posterior probability
+conditioned on $X$. Posterior probability refers to probability
+of a specific tuple based on a hypothesis or condition. The
+classifier predicts that $X$ belongs to class $C_i$ if and only if
+$P(C_i|X) > p(C_j|X) $ for $1<j<m$ and $x,j\neq 0 $  
+Thus the class $C_i$ for which $P(C_i -  X)$  is maximized known
+as the maximum posterior hypothesis \cite{naiveB}.
+\begin{align}
+  P(C_i — X) = \frac{P(X|C_i)P(C_i)}{P(X)}
+\end{align}
+where $P(C_i — X)$ is the posterior probability of class given predictor, $P(C)$ is prior probability of class, $P(X_{c_i})$ likelihood the probability of predictor given class and $P(X)$ prior probability of predictor.
+
+
+
+\section{Results}
+\subsection{Implementation Details}
+The data is preprocessed using the preprocessing steps that were discussed in Section 3. After the Term Frequency and the Term Frequency-Inerse Document Recurrence (TF-IDF), we have around 68 thousand features which would consume a lot of memeory and computational power.
+To tackle this problem, we have implemented different dimensionality reduction techniques and found PCA to be more useful. We were successfully able to reduce the dimentions from 68000 to 2000. But the accuracy of the model was not very good and stagered at around 40 to 50\%.
+So we tried a differnt approch by building a machine learning pipe line and passing the TF and TF-IDF as a parameter to the model and fead the preprocessed data into the model for training. We have implemented different models to see which one works better with the data set we have and found Multinomial Navie Bayes classifer to be the better among the rest. Mode details about accuracy comparision are given in TABLE I. 
+But the Multinomial Navie Bayes Classifer resulted in an accuracy of 56\% which is not very ideal when compared with the TA base line that was provided. So we have tried implementing the model with XLNET.
+\begin{table}[htbp]
+	\caption{Model Comparision}
+	\begin{center}
+	\begin{tabular}{|c|c|c|}
+	\hline
+	% \textbf{Table}&\multicolumn{2}{|c|}{\textbf{Table Column Head}} \\
+	\cline{2-3} 
+	\textbf{Head} & \textbf{\textit{Model name}}& \textbf{\textit{Accuracy}}\\
+	\hline
+	1& XLNET&57\%\\
+	\hline
+	2& Multinomial Navie Bayes Classifer&56\% \\
+	\hline
+	3& Logistic Regression& 54\%\\
+	\hline
+	4& SVM&54\% \\
+	\hline
+	5& Random Forest&47\% \\
+	\hline
+	6& KNN&42\% \\
+	\hline
+	% \multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
+	\end{tabular}
+	\label{tab1}
+	\end{center}
+	\end{table}
+	
+We demonstrated in our experiments with three text collections that lasso logistic regression yields consistently higher
+effectiveness than ridge and is very close to SVM. At the
+same time it offers the substantial advantage of sparsity of
+the fitted model.
+
+
+
+\section{Statement of Contributions}
+\begin{thebibliography}{00}
+	\bibitem{b1} Text classification algorithms: A survey. Kowsari, Kamran and Jafari Meimandi, Kiana and Heidarysafa, Mojtaba and Mendu, Sanjana and Barnes, Laura and Brown, Donald
+\end{thebibliography}
+	\vspace{12pt}
+	
+	
+
+
+
+% @article{kowsari2019text,
+%   title={Text classification algorithms: A survey},
+%   author={Kowsari, Kamran and Jafari Meimandi, Kiana and Heidarysafa, Mojtaba and Mendu, Sanjana and Barnes, Laura and Brown, Donald},
+%   journal={Information},
+%   volume={10},
+%   number={4},
+%   pages={150},
+%   year={2019},
+%   publisher={Multidisciplinary Digital Publishing Institute}
+% }
+
+
+%\bibliographystyle{ieee}
+%\begin{thebibliography}{00}
+%\end{thebibliography}
+
+
+
+\end{document}
+Julien
+Description about Datasets (done, maybe someone can help write smth about ethics ?),
+regression algorithm (its in intro)
+feature extraction (its in result)
+any thing you think you can include
+
+
+ thing to write: Kamal
+ Equations:
+ Latex equations for both LDA and Regression
+ Algorithm for LDA
+ sudo code
+ experiments
+ 
+ Sunnny
+ intro : dont forget to write about litterature on those datasets (state of  the art accuracy etc)
+ results
+ conclusion
+ 
+ 
+ assumptions and final accuracy
+Discussion: over fitting and features
+
