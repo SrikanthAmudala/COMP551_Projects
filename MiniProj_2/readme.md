@@ -1,3 +1,21 @@
+
+One of the applications of machine learning is in
+the classification where model construction is utilized for text
+classification. The more the model learns from previous data, the
+more accurate it would perform. The ability of a classification
+model to achieve high accuracy in text mining is of significant
+importance. The complexity of text data unfavourable for most
+models, which is a major challenge, the training and testing data
+in the classification of data must be selected in a way that the
+model enjoys the most efficient learning from previous data and
+the highest accuracy in text classification. In this study, the Reddit
+dataset of comments, the models for predicting the categories are
+developed based on logistic regression, Support Vector Machine
+and Naive Bayesian methods and the accuracy of each model is
+evaluated. The best performance and accuracy, while it depends
+on the nature and complexity of the dataset.
+
+
 **config.py** 
 Contains the input path for the datasets.
 
